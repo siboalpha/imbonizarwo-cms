@@ -1,0 +1,80 @@
+{% extends 'cms/base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Imbonizarwo Projects</h6>
+        </div>
+        <div class="card-body">
+            <div class="container p-0">
+                <div class="row">
+                    {% for project in projects %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+
+                            <div class="card-header px-4 pt-4">
+                                <div class="card-actions float-right">
+                                    <div class="dropdown show">
+                                        <a href="#" data-toggle="dropdown" data-display="static">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-more-horizontal align-middle">
+                                                <circle cx="12" cy="12" r="1"></circle>
+                                                <circle cx="19" cy="12" r="1"></circle>
+                                                <circle cx="5" cy="12" r="1"></circle>
+                                            </svg>
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="{% url 'project' project.id %}">More details</a>
+                                            <a class="dropdown-item" href="{% url 'delete-project' project.id %}">Delete</a>
+                                            {% if project.status == "Complete" %}
+                                            <a class="dropdown-item" href="{% url 'uncomplete-project' project.id %}">Mark Uncomplete</a>
+                                            {% elif project.status == "Uncomplete"%}
+                                            <a class="dropdown-item" href="{% url 'complete-project' project.id %}">Mark Complete</a>
+                                            {% else %}
+                                            <a class="dropdown-item" href="{% url 'edit-project' project.id %}">Edit</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <h6 class="card-title mb-0">{{project.name}}</h6>
+                                <small>{{project.project_type}}</small><br>
+                                <div class="badge" style="background-color: black; color: white;padding: 7px;">{{project.status}}</div>
+                            </div>
+                            <div class="card-body px-4 pt-2">
+                                <p>{{project.shortproject}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+             </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+{% endblock %}

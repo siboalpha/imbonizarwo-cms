@@ -1,0 +1,51 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- DataTales Example -->
+  <h6 style="background-color: black; padding: 15px; border-radius: 10px;">
+    Requests Center
+</h6>
+  <div class="card shadow mb-4 col-lg-6" style="padding-top: 10px;">
+    {% if requests.exists %}
+    {% for a_request in requests %}
+    {% if a_request.is_resolved == False %}
+    <a href="{% url 'user-request' a_request.id%}" style="border-radius: 10px; background-color: rgb(146, 211, 255); padding: 15px; margin-bottom: 10px;">
+        <div class="row">
+            <div class="col-lg-2">
+                <img class="rounded-circle" src="{% static 'img/undraw_profile_1.svg' %}" alt="...">
+                <div class="status-indicator bg-success"></div>
+            </div>
+            <div class="col-lg-10">
+                <div class="small text-gray-500">{{a_request.from_user.first_name}}
+                    {{a_request.from_user.last_name}}
+                </div>
+                <div class="">{{a_request.shortrequest}}</div>
+            </div>
+        </div>
+      </a>
+    {% else %}
+    <a href="{% url 'user-request' a_request.id%}" style="border-radius: 10px; background-color: rgb(245, 245, 245); padding: 15px; margin-bottom: 10px;">
+      <div class="row">
+          <div class="col-lg-2">
+              <img class="rounded-circle" src="{% static 'img/undraw_profile_1.svg' %}" alt="...">
+              <div class="status-indicator bg-success"></div>
+          </div>
+          <div class="col-lg-10">
+              <div class="small text-gray-500">{{a_request.from_user.first_name}}
+                  {{a_request.from_user.last_name}}
+              </div>
+              <div class="">{{a_request.shortrequest}}</div>
+          </div>
+      </div>
+    </a>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <h6>You have no requstests</h6>
+    {% endif %}
+  </div>
+
+</div>
+  {% endblock %}

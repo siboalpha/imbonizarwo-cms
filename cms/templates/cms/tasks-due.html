@@ -1,0 +1,38 @@
+{% extends 'cms/base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Uncompleted tasks</h1>
+    </div>
+    <!-- Due  Tasks -->
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <!-- Card Header -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"> These are the tasks you need to complete</h6>
+
+            </div>
+            <!--y -->
+            <div class="card-body">
+                <!-- Task trigger modal -->
+                {% for task in tasks %}
+                    {% if task.complete == False %}
+                    <a href="{% url 'task' task.id %}">
+                        <p><span><i class="far fa-dot-circle" style='color:red'></i><span> </span>{{task.title}}</p>
+                    </a>
+
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- End of Main Content -->
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-xl-7 col-lg-6" style="margin: 20px;">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group co">
+            {{form.name}}
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                {{form.email}}
+            </div>
+            <div class="form-group col-lg-6">
+                {{form.phone}}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            {{form.website}}
+        </div>
+        <di class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    {{form.instagram}}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    {{form.facebook}}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    {{form.twitter}}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    {{form.linkedin}}
+                </div>
+            </div>
+        </di>
+        <button type="submit" value="Submit" class="btn btn-primary">Update</button>
+     </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+.vscode
+venv/
+core/.env
+db.sqlite3
+configurations.txt
+media/
+staticfiles/

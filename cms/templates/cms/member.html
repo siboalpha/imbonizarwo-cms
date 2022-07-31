@@ -1,0 +1,152 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                width="150">
+              <div class="mt-3">
+                <h4>{{member.username.first_name}}</h4>
+                <p class="text-secondary mb-1">{{member.position}}</p>
+                <a href="mailto:{{member.username.email}}" class="btn btn-outline-primary">Send email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <p><span><i class="fab fa-facebook" style='color:#4267B2; font-size: 24px;'></i><span> </span>Facebook
+                  <span>{{client_details.facebook}}</span></p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <p><span><i class="fab fa-instagram" style='color:#8a3ab9; font-size: 24px;'></i><span> </span>Instagram
+                  <span>{{client_details.instagram}}</span></p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <p><span><i class="fab fa-linkedin" style='color:#0077b5; font-size: 24px;'></i><span> </span>Linkedin
+                  <span>{{client_details.linkedin}}</span></p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <p><span><i class="fab fa-twitter-square" style='color:#1DA1F2; font-size: 24px;'></i><span>
+                  </span>Twitter <span>{{client_details.twitter}}</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Full Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{member.first_name}} {{member.last_name}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{member.email}}
+              </div>
+            </div>
+            <hr>
+            {% for profile_dt in profile %}
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Birthdate</h6>
+              </div>
+          
+              <div class="col-sm-9 text-secondary"> 
+                {{profile_dt.birthday}}
+              </div>
+
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Gender</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.gender}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Phone</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.phone}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Mobile</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.phone}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.address}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Address 2</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.address2}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Country</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.country}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">City</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{profile_dt.state_city}}
+              </div>
+            </div>
+            {% endfor %}
+            <hr>
+            <div class="row">
+              <div class="col-sm-12">
+                <a class="btn btn-primary" href="#">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

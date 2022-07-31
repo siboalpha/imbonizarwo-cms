@@ -1,0 +1,54 @@
+{% extends 'cms/base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Activities</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        {% for activity in activities %}
+        <div class="col-lg-4">
+            <!-- Default Card Example -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    {{activity.title}} 
+                    <br>
+                    <span style="font-size: x-small;" >On: {{activity.due_date}}</span>
+                    {% if request.user.is_staff %}
+                    <br>
+                    {% if activity.complete == True %}
+                    <a href="{% url 'delete-activity' activity.id %}" style="font-size: smaller;"><span><i class='far fa-trash-alt' style='color:red'></i></span><span></span> Delete</a>
+                    {% endif %}
+                    {% if activity.complete == False %}
+                    <a href="{% url 'complete-activity' activity.id %}" style="font-size: smaller;"><span><i class='far fa-check-circle' style='color:green'></i></span><span></span> Mark complete</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    {{activity.description}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</div>
+
+
+</div>
+<!-- End of Main Content -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+{% endblock %}

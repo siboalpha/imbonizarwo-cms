@@ -1,0 +1,36 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row" style="padding: 20px;">
+    <!-- Task-->
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+
+            <div class="card-body">
+
+                <h5 class="card-title font-weight-bold text-primary">{{userrequest.title}}</h5>
+                <p> <span class="font-weight-bold text-primary">requested On: </span
+                        class="card-subtitle mb-2 text-muted"><span>{{userrequest.requested_at}}</span></p>
+                <p class="card-text ">{{userrequest.description}}</p>
+                <div class="modal-footer">
+                    <a href="{% url 'user-requests' %}" type="button" class="btn btn-secondary" data-dismiss="modal">Back to requests</a>
+                    {% if userrequest.from_user == request.user %}
+                    {% if userrequest.is_resolved %}
+                    <a href="{% url 'delete-request' userrequest.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}
+                    {% endif %}
+
+                    {% if userrequest.is_resolved == False %}
+                    <a href="{% url 'resolve-request' userrequest.id %}"><button type="button" class="btn btn-primary">Resolve</button></a>
+                    {% endif %}
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

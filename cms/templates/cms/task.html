@@ -1,0 +1,37 @@
+{% extends 'cms/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row" style="padding: 20px;">
+    <!-- Task-->
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+
+            <div class="card-body">
+
+                <h5 class="card-title font-weight-bold text-primary">{{task.title}}</h5>
+                <p> <span class="font-weight-bold text-primary">Due On: </span
+                        class="card-subtitle mb-2 text-muted"><span>{{task.due_date}} | {{task.due_time}}</span></p>
+                <p class="card-text ">{{task.description}}</p>
+                <div class="modal-footer">
+                    <a href="{% url 'tasks' %}" type="button" class="btn btn-secondary" data-dismiss="modal">Back to tasks</a>
+                    {% if request.user.is_staff %}
+                    {% if task.complete %}
+                    <a href="{% url 'delete-task' task.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    {% endif %}
+                    {% endif %}
+
+                    {% if task.complete == False %}
+                    <a href="{% url 'edit-task' task.id %}"><button type="button" class="btn btn-secondary">Edit</button></a>
+                    <a href="{% url 'complete-task' task.id %}"><button type="button" class="btn btn-primary">Complete</button></a>
+                    {% endif %}
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
